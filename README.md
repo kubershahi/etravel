@@ -1,5 +1,7 @@
-# Etravel website for AP project
-Project built in Django version: 2.2.5
+# E-travel Website Built Using Django
+
+Project for Advanced Programming Course (Monsoon 2019: Aug 2019 - Dec 2019)
+Django version: 2.2.5 (Monsoon 2019: Aug 2019 - Dec 2019)
 
 To run the project on windows:
 
