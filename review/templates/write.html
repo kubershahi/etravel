@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% load crispy_forms_tags %}
+<title>Review</title>
+<main>
+	<b><h5 class="center">Write a review: </h5></b>
+<div class="container">
+    <form method="post">
+    {% csrf_token%}
+    {{form|crispy}}
+    <button class="btn waves-effect waves-light" type="submit" name="action">Submit<i class="material-icons right">send</i></button>
+
+    </form>
+    {{rating}}
+</div>
+</main>
+{% endblock %}

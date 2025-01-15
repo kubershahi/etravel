@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}
+<title> Flight Payment </title>
+<main>
+<div class = "container">
+<p><h4 class ="center-align">Flight Summary: </h4><p>
+<p>
+<table class= "highlight">
+        <thead>
+          <tr>
+             <th></th>
+             <th>Company</th>
+             <th><i class="material-icons prefix">flight_takeoff</i></th>
+             <th><i class="material-icons prefix">flight_land</i></th>
+             <th>Date</th>
+             <th>Time</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="row">
+                <div class= "col s1">
+                  <img src='{{flight.Logo}}' class = "circle" height= '50' width= '50'>
+                </div>
+            </td>
+            <td>
+              <div class = "col s2">
+                {{ flight.companyName}}
+              </div>
+            </td>
+            <td>
+              <div class = "col s2">
+
+                   {{ flight.sourceLocation }}
+              </div>
+            </td>
+            <td>
+              <div class = "col s1">
+
+                {{ flight.destinationLocation }}
+              </div>
+            </td>
+            <td>
+              <div class = "col s1">
+                {{ flight.departureDate}}
+              </div>
+            </td>
+
+            <td>
+             <div class = "col s2">
+              {{ flight.departureTime}}
+            </div>
+          </td>
+        </div>
+        </tr>
+      <tbody>
+    </table>
+
+<p> <h5 class="center-align"> No. of Tickets Booking: <i class="material-icons prefix">airline_seat_recline_normal</i> {{ n }} </h5></p>
+<p> <h5 class="center-align">Total amount: Rs. {{ total }} </h5></p>
+</div>
+<div class = "container center-align">
+  <div class="section">
+    <a class="waves-effect waves-light btn-small" href= "{% url 'flight_payment' flight.id n %}">Pay</a>
+  </div>
+</div>
+</main>
+{% endblock content %}

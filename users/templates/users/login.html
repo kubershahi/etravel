@@ -1,0 +1,37 @@
+{%extends "base.html" %}
+{% block content%}
+{% load crispy_forms_tags %}
+{% load socialaccount %}
+{% load static %}
+<title>Login</title>
+<main>
+    <div class = "container">
+        <div class = 'row'>
+            <div class = 'col s12 m8 offset-m2'>
+                <h3>Login</h3>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form|crispy}}
+                    <div align = 'center'>
+                        <button class="btn btn-outline-info" type="submit">Log In</button>
+                        <a class="waves-effect waves-light btn"  style="background-color: #A9A9A9; color: black" href="{% provider_login_url 'google' %}">
+                        <i class="material-icons left">
+                                <img width="20px" alt="Google &quot;G&quot; Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"/> 
+                        </i>
+                        Log In with Google</a>
+                    </div>
+                </form>
+                <hr style="height:0.5px; visibility:hidden;" />
+                <div  align ='center' class="d-flex flex-column">
+                <a href="{% url 'password_reset' %}">Forgot Password?</a>
+                </div>
+
+                <div align ='center' class="border-top pt-3">
+                    <medium class="text-muted">Don't have an account?&nbsp;<a class="ml-2" href="/register">Sign Up</a>
+                    </medium>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock content %}

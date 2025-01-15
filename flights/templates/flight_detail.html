@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block content %}
+<title> Flight Detail </title>
+<main>
+<div class = "container">
+  <div class="section">
+    {% if flight %}
+    <table class= "highlight">
+        <thead>
+          <tr>
+             <th></th>
+             <th>Company</th>
+             <th>Class</th>
+             <th>Price</th>
+             <th>Time</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="row">
+                <div class= "col s1">
+                  <img src='{{flight.Logo}}' class = "circle" height= '50' width= '50'>
+                </div>
+            </td>
+            <td>
+              <div class = "col s2">
+                {{ flight.companyName}}
+              </div>
+            </td>
+            <td>
+              <div class = "col s2">
+                {{ flight.classtype}}
+              </div>
+            </td>
+            <td>
+              <div class = "col s1">
+                {{ flight.price}}
+              </div>
+            </td>
+            <td>
+             <div class = "col s2">
+              {{ flight.departureTime}}
+            </div>
+          </td>
+        </div>
+        </tr>
+      <tbody>
+    </table>
+    {% endif %}
+  </div>
+
+  <div class="section">
+    <h4>Flight details</h4>
+
+
+  <form method='post'> {% csrf_token %}
+
+      {% for field in form %}
+      <div class= "row col s2">
+         <h5>Number of Passenger(s):</h5>
+
+<div class="input-field col s2">
+          <i class="material-icons prefix">airline_seat_recline_normal</i>
+          {{field}}
+        </div>
+
+      </div>
+
+
+      {% endfor %}
+
+    <div class="row">
+      {{ message1 }}{{ r }}{{ message2 }}
+    </div>
+    <div class="row">
+      <button  class="btn waves-effect waves-light" type="submit">Continue<i class="material-icons right">send</i></button>
+    </div>
+  </div>
+
+</form>
+</main>
+{% endblock content %}
+

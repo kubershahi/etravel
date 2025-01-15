@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<title> Hotel Detail </title>
+<main>
+<div class = "container">
+    <h4 class="center-align">Hotel details</h4>
+  <div class="section">
+    {% if hotel %}
+
+    <table class= "highlight">
+        <thead>
+          <tr>
+             <th></th>
+             <th>Hotel</th>
+             <th>Location</th>
+             <th>Room Type</th>
+             <th>Rooms Left</th>
+             <th>Room Price</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="row">
+                {% comment %}
+                <div class= "col s1">
+                  <img src={{hotel.image}} height= '50' width= '50'>
+                </div>{% endcomment %}
+            </td>
+            <td>
+              <div class = "col s2">
+                {{ hotel.hotelName}}
+              </div>
+            </td>
+            <td>
+              <div class = "col s2">
+                {{ hotel.location}}
+              </div>
+            </td>
+            <td>
+              <div class = "col s1">
+                {{ hotel.roomType}}
+              </div>
+            </td>
+            <td>
+             <div class = "col s2">
+              {{ hotel.roomsLeft}}
+            </div>
+          </td>
+          <td>
+          <div class = "col s1">
+            {{ hotel.price}}
+          </div>
+        </td>
+
+        </div>
+        </tr>
+      <tbody>
+    </table>
+    {% endif %}
+  </div>
+  <div class="section">
+
+
+  <form method='post'> {% csrf_token %}
+    <div class="row">
+      {% for field in form %}
+      <div class= "row col s12">
+      <h6 class="center-align">Number of Rooms:</h6>
+      </div>
+      <div class= "col s12">
+        <h6 class="center-align">{{field}}</h6>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="row">
+      {{ message1 }}{{ r }}{{ message2 }}
+    </div>
+    <div class="row col s2 center-align">
+      <button  class="btn waves-effect waves-light" type="submit" >Continue <i class="material-icons right">send</i></button>
+    </div>
+  </div>
+</form>
+
+<b><h5 class="center">Reviews</h5></b>
+<div class="container">
+  {% if reviews %}
+  {% for review in reviews %}
+<ul class="collection">
+    <li class="collection-item avatar">
+      <img src="{% static 'front/image/133.jpg'%}" alt="" class="circle">
+      <span class="title">User: {{ review.user }}</span>
+      <p>City: {{ review.city }} <br>
+         Hotel: {{ review.hotel }} <br>
+         Rating: {{ review.rating }}/5 <br>
+         Review: {{ review.review }}
+      </p>
+    </li>
+</ul>
+  {% endfor %}
+{%else%}
+   <b><h6 class="center">No reviews yet.</h6></b>
+  {% endif %}
+</div>
+
+</main>
+{% endblock content %}

@@ -1,0 +1,227 @@
+{% extends "base.html" %}
+{% block content%}
+{% load static %}
+{% load crispy_forms_tags %}
+<title>Hotel Results</title>
+<main>
+<br>
+<div class= "container">
+<nav class="white">
+  <div class="nav-wrapper">
+    <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <li>..............................................................................</li>
+      <li><a class="waves-effect waves-light btn">Location: {{ l }}</a></li>
+      <li><a class="waves-effect waves-light btn">Class: {{ c }}</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<!--<div class = "container">
+  <div class="section">
+    {% if hotels %}
+        <table class= "highlight">
+        <thead>
+          <tr>
+             <th></th>
+             <th><font color="white">....</font></th>
+              <th>Hotel</th>
+
+             <th>Location</th>
+             <th>Room Type</th>
+             <th>Rooms Left</th>
+             <th>Price</th>
+             <th><font color="white">...........</font></th>
+             <th></th>
+          </tr>
+        </thead>
+      </table>
+      {% for hotel in hotels %}
+
+      <table class= "highlight">
+        <thead>
+          <tr>
+             <th></th>
+             <th><font color="white">Company</font></th>
+             <th><font color="white">Class</font></th>
+             <th><font color="white">Price</font></th>
+             <th><font color="white">Time</font></th>
+             <th><font color="white">Seats Left</font></th>
+             <th></th>
+          </tr>
+        </thead>
+      <tbody>
+          <tr>
+            <td>
+              <div class="row">
+              <div class= "col s1">
+                {% comment %}
+                <img src='{{ hotel.image }}' class= "circle" height= '45' width= '45'>
+              </div>{% endcomment %}
+            </td>
+            <td>
+              <div class= "col s2">
+                {{ hotel.hotelName}}
+              </div>
+            </td>
+            <td>
+              <div class= "col s3">
+                {{ hotel.location}}
+              </div>
+            </td>
+            <td>
+              <div class= "col s2">
+                {{ hotel.roomType}}
+              </div>
+            </td>
+            <td>
+              <div class= "col s2">
+                {{ hotel.roomsLeft}}
+              </div>
+            </td>
+            <td>
+              <div class= "col s1">
+                {{ hotel.price}}
+              </div>
+            </td>
+
+            <td>
+        {% if hotel.roomsLeft != 0 %}
+            <div class= "col s2">
+              {% if request.user.is_authenticated %}
+              <a class="waves-effect waves-light btn-small" href= "{% url 'hotel_detail' hotel.id %}">Book Now</a>
+            {% else %}
+              <a class="waves-effect waves-light btn-small" href= "{% url 'login' %}">Book Now</a>
+            {% endif %}
+          </div>
+        {% else %}
+          <div class = "col s4 offset-s8">
+            <button class="waves-effect waves-light btn-small"> All Rooms Booked</button>
+          </div>
+        {% endif %}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      {% endfor %}
+    {% else %}
+      Sorry!!! No Hotels available for the desired search.
+    {% endif %}
+  </div>
+</div>
+</div>
+-->
+  <div class="section">
+    {% if hotels %}
+    <table class= "highlight">
+        <thead>
+          <tr>
+             <th></th>
+             <th><font color="white">.....................</font></th>
+              <th>Hotel</th>
+
+             <th><font color="white">......</font></th>
+             <th>Room Type</th>
+
+             <th>Room Left</th>
+             <th>Price</th>
+             <th><font color="white">...........................</font></th>
+             <th></th>
+          </tr>
+        </thead>
+
+
+    {% for hotel in hotels %}
+
+      <table class= "highlight">
+        <thead>
+          <tr>
+             <th></th>
+             
+             <th><font color="white">Location</font></th>
+             <th><font color="white">...room Type</font></th>
+             <th><font color="white">..Room Left</font></th>
+             <th><font color="white">Price..</font></th>
+             <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>
+              <div class= "col s1">
+                <img src='{{ hotel.image }}' class= "circle" height= '120' width= '120'>
+              </div>
+            </td>
+            <td>
+              <div class= "col s2">
+                {{ hotel.hotelName}}
+              </div>
+            </td>
+            <td>
+              <div class= "col s3">
+                {{ hotel.roomType}}
+              </div>
+            </td>
+            <td>
+              <div class= "col s2">
+                {{ hotel.roomsLeft}}
+              </div>
+            </td>
+            <td>
+              <div class= "col s2">
+                {{ hotel.price}}
+              </div>
+            </td>
+            <td>
+
+            <td>
+        {% if hotel.roomsLeft != 0 %}
+            <div class= "col s2">
+              {% if request.user.is_authenticated %}
+              <a class="waves-effect waves-light btn-small" href= "{% url 'hotel_detail' hotel.id %}">Book Now</a>
+            {% else %}
+              <a class="waves-effect waves-light btn-small" href= "{% url 'login' %}">Book Now</a>
+            {% endif %}
+          </div>
+        {% else %}
+          <div class = "col s4 offset-s8">
+            <button class="waves-effect waves-light btn-small"> All Rooms Booked</button>
+          </div>
+        {% endif %}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      {% endfor %}
+    {% else %}
+
+
+      <h4 class="center-align">Sorry!!! No Flights available for the desired search.</h4>
+    {% endif %}
+  </div>
+</div>
+{% endblock content %}
+
+<!--
+<div class="container">
+
+  {% if reviews %}
+  <h6 class="center-align">Reviews:</h6><br>
+  {% for review in reviews %}
+  <div class="row">
+  <h6 class ="center-align">
+  User: {{ review.user }}----
+  City: {{ review.city }}----
+  Hotel: {{ review.hotel }}----
+  Rating: {{ review.rating }}/5----
+  Review: {{ review.review }}
+  {% endfor %}
+  {%else%}
+  No data</h6>
+  {% endif %}
+
+
+</div>
+</main>

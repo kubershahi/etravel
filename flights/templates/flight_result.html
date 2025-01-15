@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% block content%}
+{% load static %}
+<title>Flight Results</title>
+<main>
+<br>
+<div class= "container">
+<nav class="white">
+  <div class="nav-wrapper">
+    <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <li>..............</li>
+      <li><a class="waves-effect waves-light btn">Trip Type: One way</a></li>
+      <li><a class="waves-effect waves-light btn">From : {{ q }}</a></li>
+      <li><a class="waves-effect waves-light btn">To : {{ r }}</a></li>
+      <li><a class="waves-effect waves-light btn">Class: {{ c }}</a></li>
+      <li><a class="waves-effect waves-light btn">Date: {{ d }}</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+  <div class="section">
+    {% if flights %}
+    <table class= "highlight">
+        <thead>
+          <tr>
+             <th></th>
+             <th><font color="white">....</font></th>
+              <th>Company</th>
+
+             <th>Class</th>
+             <th>Price</th>
+             <th>Time</th>
+             <th>Seats Left</th>
+             <th><font color="white">...........</font></th>
+             <th></th>
+          </tr>
+        </thead>
+
+
+    {% for flight in flights %}
+
+      <table class= "highlight">
+        <thead>
+          <tr>
+             <th></th>
+             <th><font color="white">Company</font></th>
+             <th><font color="white">Class</font></th>
+             <th><font color="white">Price</font></th>
+             <th><font color="white">Time</font></th>
+             <th><font color="white">Seats Left</font></th>
+             <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>
+              <div class= "col s1">
+                <img src='{{ flight.Logo }}' class= "circle" height= '45' width= '45'>
+              </div>
+            </td>
+            <td>
+              <div class= "col s2">
+                {{ flight.companyName}}
+              </div>
+            </td>
+            <td>
+              <div class= "col s3">
+                {{ flight.classtype}}
+              </div>
+            </td>
+            <td>
+              <div class= "col s2">
+                {{ flight.price}}
+              </div>
+            </td>
+            <td>
+              <div class= "col s2">
+                {{ flight.departureTime}}
+              </div>
+            </td>
+            <td>
+              <div class= "col s1">
+                {{ flight.numSeatsRemaining}}
+              </div>
+            </td>
+
+            <td>
+        {% if flight.numSeatsRemaining != 0 %}
+            <div class= "col s2">
+              {% if request.user.is_authenticated %}
+               <a class="waves-effect waves-light btn-small" href= "{% url 'flight_detail' flight.id %}">Book Now</a>
+              {% else %}
+              <a class="waves-effect waves-light btn-small" href= "{% url 'login' %}">Book Now</a>
+            {% endif %}
+
+            </div>
+        {% else %}
+            <div class= "col s2">
+              <button class="waves-effect waves-light btn-small">No Seats Left</button>
+            </div>
+        {% endif %}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      {% endfor %}
+    {% else %}
+
+
+      <h4 class="center-align">Sorry!!! No Flights available for the desired search.</h4>
+    {% endif %}
+  </div>
+</div>
+</main>
+<script src="{% static 'front/js/materialize.js' %}"></script>
+<script src="{% static 'front/js/init.js' %}"></script>
+
+
+{% endblock content %}

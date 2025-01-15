@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="{% static 'front/css/materialize.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{% static 'front/css/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+
+
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+  <nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="{% url 'home' %}" class="left brand-logo">metrotravel</a>
+      <a id="logo-container" href="{% url 'home' %}" class="brand-logo hide-on-med-and-up">MT</a>
+      <ul class="right hide-on-med-and-down">
+        <li>
+            <!--<form class="form-line" action='/s/'>
+                  <input class="center form-control mr-sm-2" type="search" name="q" placeholder="Search" aia-label="Search">
+              </form>-->
+        </li>
+        <li><a href = "{% url 'home' %}" class="tooltipped" data-position="bottom" data-tooltip="Flights"><i class="material-icons">local_airport</i></a></li>
+        <li><a href = "{% url 'hotels' %}" class="tooltipped" data-position="bottom" data-tooltip="Hotels"><i class="material-icons">hotel</i></a></li>
+
+        {% if user.is_authenticated %}
+        <li><a href = "{% url 'mybookings' %}" class="tooltipped" data-position="bottom" data-tooltip="My Bookings"><i class="material-icons">book</i></a></li>
+        <li><a href = "/profile" class="tooltipped" data-position="bottom" data-tooltip="My Profile"><i class="material-icons">face</i></a></li>
+        <li><a href = "/logout" class="tooltipped" data-position="bottom" data-tooltip="Logout"><i class="material-icons">power_settings_new</i></a></li>
+        {% else %}
+        <li><a href = "/login" class="tooltipped" data-position="bottom" data-tooltip="Login/Signup"><i class="material-icons">face</i></a></li>
+        {% endif %}
+      </ul>
+
+        <ul id="slide-out" class="sidenav">
+          <li><div class="user-view">
+            <div class="background">
+            </div>
+            <a href="#name"><span class="white-text name">{{user.first_name}}</span></a>
+            <a href="#email"><span class="white-text email">{{user.email}}</span></a>
+          </div></li>
+          <li><a href="/profile"><i class="material-icons">face</i>Profile</a></li>
+          <li><a href="#!"><i class="material-icons">shopping_cart</i>Cart</a></li>
+          <li><div class="divider"></div></li>
+          <li><a class="subheader">Subheader</a></li>
+          <li><a class="waves-effect" href="#!"><i class="material-icons">power_settings_new</i>Logout</a></li>
+        </ul>
+        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+</head>
+
+<body>
+  {% block content %}
+  {% endblock %}
+</body>
+
+<footer class="page-footer teal">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">Company Bio</h5>
+        <p class="grey-text text-lighten-4">metrotravel Limited: an Indian online travel company founded in 2000 AD. Headquartered in Gurugram, Haryana. </p>
+
+
+      </div>
+      <div class="col l3 s12">
+        <h5 class="white-text">Connect</h5>
+        <ul>
+          <li><a class="white-text" href="#!">@Facebook</a></li>
+          <li><a class="white-text" href="#!">@Instgram</a></li>
+          <li><a class="white-text" href="#!">@Twitter</a></li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+    Made by <a class="brown-text text-lighten-3" href="#"> Abhinav | Anuj | Kuber | Sanchit | Shantanu </a>
+    </div>
+  </div>
+</footer>
+
+<!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<script src="{% static 'front/js/materialize.js' %}"></script>
+<script src="{% static 'front/js/init.js' %}"></script>
+</html>

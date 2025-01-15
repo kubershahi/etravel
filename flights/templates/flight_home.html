@@ -1,0 +1,76 @@
+{%extends "base.html" %}
+{% block content%}
+{% load static %}
+{% load crispy_forms_tags %}
+<title>Metrotravel: Flights & Hotels</title>
+<div id="index-banner" class="parallax-container">
+  <div class="section no-pad-bot">
+    <div class="container-fluid">
+      <br><br>
+      <div class="row center">
+      </div>
+      <div class="row center">
+      </div>
+      <br><br>
+    </div>
+  </div>
+  <div class="parallax"><a href=""><img src="{% static 'front/image/14.jpg'%}" class = 'responsive-img'></a></div>
+</div>
+
+<div class="row">
+  <form class="form-line" action='/s/'>
+        <b><h5 class="center">Flights</h5></b>
+
+
+<div class="form-group col s3">
+
+  <select class="form-control" id="sel1" type="search" name="q" placeholder="From" aia-label="Search" required>
+    <option selected>From</option>
+    <option>Delhi</option>
+    <option>Mumbai</option>
+    <option>Chennai</option>
+    <option>Kolkata</option>
+    <option>Bangalore</option>
+  </select>
+</div>
+
+<div class="form-group col s3">
+
+  <select class="form-control" id="sel1" type="search" name="r" placeholder="To" aia-label="Search" required>
+    <option selected>To</option>
+    <option>Delhi</option>
+    <option>Mumbai</option>
+    <option>Chennai</option>
+    <option>Kolkata</option>
+    <option>Bangalore</option>
+  </select>
+</div>
+
+<div class="form-group col s3">
+
+  <select class="form-control" id="sel1" type="search" name="c" placeholder="Class" aia-label="Search" required>
+    <option selected>Class</option>
+    <option>Economy</option>
+    <option>Business</option>
+
+  </select>
+</div>
+
+<div class="form-group col s3">
+
+
+        <input class="center form-control mr-sm-2" class="datepicker" type="Date" name="d" placeholder="Date" required>
+      </div>
+
+    <div class= "row">
+      <div class= "col s3 offset-s5">
+        <button class="btn waves-effect waves-light" type="submit" name="action">Search<i class="material-icons right">send</i></button>
+      </div>
+    </div>
+
+</div>
+
+<script src="{% static 'front/js/materialize.js' %}"></script>
+<script src="{% static 'front/js/init.js' %}"></script>
+{% endblock content %}
+

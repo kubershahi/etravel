@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<title>  Hotel Payment </title>
+<main>
+
+<div class = "container">
+    <nav class="white">
+  <div class="nav-wrapper center-align">
+
+    <ul id="nav-mobile" class="hide-on-med-and-down" class= "tabs center">
+      <li>...........................................................</li>
+      <li><a class="waves-effect waves-light btn">{{ hotel.hotelName }}</a></li>
+      <li><a class="waves-effect waves-light btn">{{hotel.location }}</a></li>
+      <li><a class="waves-effect waves-light btn">{{ hotel.roomType}}</a></li>
+    </ul>
+</div>
+</nav>
+<br>
+
+<div class="section">
+    <p><h5 class="center-align">Your payment has been successful for {{ hotel.hotelName }} hotel located at {{ hotel.location }}.</h5><p>
+    <p><h6 class="center-align">Continue Travelling !!! Go to <a class="waves-effect waves-light btn" type="submit" href= "{% url 'home' %}">Home</a> page </h6></p>
+  </div>
+</div>
+<br>
+<br>
+<div class = "container">
+    <div class="section">
+        <p> <h6 class="center-align">In case of any queries, contact the admin </h6> </p>
+    </div>
+</main>
+
+{% endblock content %}

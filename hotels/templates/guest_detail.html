@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+<title> Hotel Booking </title>
+<main>
+
+<div class = "container">
+
+<p><h4 class="center-align">Hotel Summary: </h5><p>
+
+<p>
+<nav class="white">
+  <div class="nav-wrapper center-align">
+
+    <ul id="nav-mobile" class="hide-on-med-and-down" class= "tabs center">
+      <li>................................................................................</li>
+
+      <li><a class="waves-effect waves-light btn">Hotel Name: {{ hotel.hotelName }}</a></li>
+      <li><a class="waves-effect waves-light btn">Location: {{ hotel.location }}</a></li>
+
+    </ul>
+</div>
+</nav>
+</p>
+<p><h5> <font color="white"> .................................................</font> Number of Rooms Booking: {{ n }} </h5></p>
+
+<div class = "container">
+  <div class="section">
+    <form method="post">{% csrf_token %}
+            <div class="section">
+                Guest Detail
+                {% for field in form %}
+                    <div class= "row">
+                        {{field.label_tag}} {{field}}
+                    </div>
+                {% endfor %}
+                {% comment %} {% for field in form %}
+                    <p>
+                        {% for error in field.errors %}
+                        <p style="color: red">{{error}}</p>
+                        {% endfor %}
+                    </p>
+                {% endfor %} {% endcomment %}
+            </div>
+            <div class="row">
+                <button  class="btn waves-effect waves-light" type="submit" > Continue <i class="material-icons right">send</i></button>
+            </div>
+    </form>
+</div>
+</div>
+</main>
+{% endblock content %}

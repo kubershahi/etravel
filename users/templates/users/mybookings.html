@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+<title> My Bookings</title>
+<main>
+<div class = "container">
+  <b><h5 class="center">Bookings</h5></b>
+  <div class="section">
+    {% if flights is not NONE and hotels is not NONE %}
+      {% for flight in flights %}
+      <table class= "highlight">
+        <thead>
+          <tr>
+             <th></th>
+             <th>Company</th>
+             <th>ID</th>
+             <th>From</th>
+             <th>To</th>
+             <th>Date</th>
+             <th>Time</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="row">
+                <div class= "col s1">
+                  <img src='{{flight.Logo}}' class = "circle" height= '50' width= '50'>
+                </div>
+            </td>
+            <td>
+              <div class = "col s2">
+                {{ flight.companyName}}
+              </div>
+            </td>
+            <td>
+              <div class = "col s2">
+                {{ flight.FlightId }}
+              </div>
+            </td>
+            <td>
+              <div class = "col s3">
+                {{ flight.sourceLocation}}
+              </div>
+            </td>
+            <td>
+              <div class = "col s2">
+                {{ flight.destinationLocation}}
+              </div>
+            </td>
+            <td>
+              <div class = "col s1">
+                {{ flight.departureDate}}
+              </div>
+            </td>
+            <td>
+             <div class = "col s2">
+              {{ flight.departureTime}}
+            </div>
+          </td>
+        </div>
+        </tr>
+      <tbody>
+    </table>
+      {% endfor %}
+
+
+
+      {% for hotel in hotels %}
+
+      <table class= "highlight">
+        <thead>
+          <tr>
+             <th></th>
+             <th>Hotel</th>
+             <th>Location</th>
+             <th>Room Type</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="row">
+                {% comment %} <div class= "col s1">
+                  <img src='{{hotel.image}}' class = "circle" height= '50' width= '50'>
+                </div> {% endcomment %}
+            </td>
+            <td>
+              <div class = "col s2">
+                {{ hotel.hotelName}}
+              </div>
+            </td>
+            <td>
+              <div class = "col s2">
+                {{ hotel.location}}
+              </div>
+            </td>
+            <td>
+              <div class = "col s3">
+                {{ hotel.roomType}}
+              </div>
+            </td>
+        </div>
+        </tr>
+      <tbody>
+    </table>
+
+      {% endfor %}
+    {% else %}
+    <h5 class="center">Sorry!!! You don't have any bookings</h5>
+    {% endif %}
+  </div>
+</div>
+<div class="container">
+  <div class="col s12 center"><class="text-muted"><h6 class="center">Want to share a review?&nbsp;<a class="ml-2" href="{% url 'review' %}" >Click here</a></h6></div>
+
+</div>
+</main>
+
+
+{% endblock content %}
